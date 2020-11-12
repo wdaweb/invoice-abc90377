@@ -13,8 +13,9 @@
 // echo "<br>";
 // echo "insert into invoice(`".implode("`,`",array_keys($_POST))."`)";
 // echo "values('".implode("','",$_POST)."')";
-$dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
-$pdo=new PDO($dsn,'root','');
+// $dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
+// $pdo=new PDO($dsn,'root','');
+include_once("../base.php");
 $sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`)  values('".implode("','",$_POST)."')";
 $pdo->exec($sql);
 echo $sql;

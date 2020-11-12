@@ -46,13 +46,15 @@
    - 有一個編輯的按鈕，按下後可以編輯該期別的獎號
 
 ## 資料庫設計範例
-1. 發票資料表-invoice
+1. 發票資料表-invoices
    - id
    - code
    - number
    - period
-   - expend
+   - payment
    - year
+   - date
+   - creat_time
 2. 獎號資料表- award_number
    - id
    - period

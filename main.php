@@ -21,8 +21,8 @@
         <div class="text-center"><a href="http://">輸入獎號</a></div>
         </div>
         <div class="col-8 d-flex mx-auto justify-content-between border p-3">
-        <form action="api/add_invoice.php">
-            <div>年分:<input type="text" name="year"></div>
+        <form action="api/add_invoice.php" method="POST">
+            <div>日期:<input type="date" name="date"></div>
             期別:<select name="period">
 
             <option value="1">1,2</option>
@@ -34,8 +34,8 @@
             </select>
             
             <div>發票號碼:
-                <input type="text" name="prepend" id="">
-                <input type="text" name="number" id="">
+                <input type="text" name="code" id="">
+                <input type="number" name="number" id="">
             </div>
             <div>發票金額:
                 <input type="number" name="payment" id="">

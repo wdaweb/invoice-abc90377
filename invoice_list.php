@@ -8,6 +8,7 @@ $rows=$pdo->query($sql)->fetchAll();
 // }
 
 ?>
+
 <table class="table">
     <tr>
         <td>發票號碼</td>
@@ -19,14 +20,14 @@ $rows=$pdo->query($sql)->fetchAll();
 foreach ($rows as $row) {
     
     ?>
-    <tr>
+    <tr <?php echo (!empty($_GET['id'])&&($_GET['id']==$row['id']))?'class="bg-success"':''?>>
         <td><?=$row['code'].$row['number'];?></td>
         <td><?=$row['date'];?></td>
         <td><?=$row['payment'];?></td>
         <td>
 
         <a href="?do=edit_invoice&id=<?=$row['id'];?>"><button>編輯</button></a>
-        <button>刪除</button>
+        <a href="?do=del_invoice&id=<?=$row['id'];?>"><button>刪除</button></a>
         </td>
     </tr>
     <?php

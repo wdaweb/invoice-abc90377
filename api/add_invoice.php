@@ -19,5 +19,5 @@ include_once("../base.php");
 $sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`)  values('".implode("','",$_POST)."')";
 $pdo->exec($sql);
 echo $sql;
-header("location:../index.php");
+header("location:../index.php?do=invoice_list");
 ?>

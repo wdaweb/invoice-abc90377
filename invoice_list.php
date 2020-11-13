@@ -1,12 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>發票清單</title>
-</head>
-<body>
-清單
-</body>
-</html>
+<?php
+include_once "base.php";
+$sql="select * from `invoices` order by `date`";
+$rows=$pdo->query($sql)->fetchAll();
+// print_r($rows);
+// foreach ($rows as $row) {
+//     echo $row['code'].$row['number']."<br>";
+// }
+
+?>
+<table class="table">
+    <tr>
+        <td>發票號碼</td>
+        <td>消費日期</td>
+        <td>消費金額</td>
+        <td>操作</td>
+    </tr>
+    <?php
+foreach ($rows as $row) {
+    
+    ?>
+    <tr>
+        <td><?=$row['code'].$row['number'];?></td>
+        <td><?=$row['date'];?></td>
+        <td><?=$row['payment'];?></td>
+        <td>
+
+        <button>編輯</button>
+        <button>刪除</button>
+        </td>
+    </tr>
+    <?php
+    }
+
+    ?>
+</table>

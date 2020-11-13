@@ -32,7 +32,7 @@
         <div class="text-center"><?=$month[$m]?></div>
         <div class="text-center"><a href="?do=invoice_list">當期發票</a></div>
         <div class="text-center"><a href="?do=award">兌獎</a></div>
-        <div class="text-center"><a href="?do=award_numbers_list">輸入獎號</a></div>
+        <div class="text-center"><a href="?do=add_awards">輸入獎號</a></div>
         <div class="text-center"><a href="index.php">回到首頁</a></div>
         </div>
         <div class="col-8 d-flex mx-auto  border p-3">

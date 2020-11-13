@@ -25,7 +25,7 @@ foreach ($rows as $row) {
         <td><?=$row['payment'];?></td>
         <td>
 
-        <button>編輯</button>
+        <a href="?do=edit_invoice&id=<?=$row['id'];?>"><button>編輯</button></a>
         <button>刪除</button>
         </td>
     </tr>

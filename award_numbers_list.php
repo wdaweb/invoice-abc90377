@@ -1,11 +1,13 @@
 <?php
 include_once "base.php";
 
-if (isset($GET['pd'])) {
-    $year=explode("-",$_GET['pd'])[0];
+if (isset($_GET['pd'])) {
+$year=explode("-",$_GET['pd'])[0];
 $period=explode("-",$_GET['pd'])[1];
 }else {
     $get_news=$pdo->query("SELECT * from `award_numbers` order by `year` desc,period desc limit 1")->fetch();
+    $year=$get_news['year'];
+    $period=$get_news['period'];
 }
 $awards=$pdo->query("select * from award_numbers where year='$year'&&period='$period'")->fetchAll();
 $special="";

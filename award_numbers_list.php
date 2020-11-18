@@ -35,8 +35,17 @@ foreach ($awards as $aw) {
 
 
 ?>
-
-
+<div class="row " > 
+<ul>
+    
+    <li><a href="http://">1 2月</a></li>
+    <li><a href="http://">3 4月</a></li>
+    <li><a href="http://">5 6月</a></li>
+    <li><a href="http://">7 8月</a></li>
+    <li><a href="http://">9 10月</a></li>
+    <li><a href="http://">11 12月</a></li>
+</ul>
+</div>
 <table class="table table-sm table-bordered" summary="統一發票中獎號碼單">
     <tbody>
         <tr>

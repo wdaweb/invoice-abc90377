@@ -8,6 +8,17 @@ $rows=$pdo->query($sql)->fetchAll();
 // }
 
 ?>
+<div class="row " > 
+<ul>
+    
+    <li><a href="http://">1 2月</a></li>
+    <li><a href="http://">3 4月</a></li>
+    <li><a href="http://">5 6月</a></li>
+    <li><a href="http://">7 8月</a></li>
+    <li><a href="http://">9 10月</a></li>
+    <li><a href="http://">11 12月</a></li>
+</ul>
+</div>
 
 <table class="table">
     <tr>
@@ -28,6 +39,7 @@ foreach ($rows as $row) {
 
         <a href="?do=edit_invoice&id=<?=$row['id'];?>"><button>編輯</button></a>
         <a href="?do=del_invoice&id=<?=$row['id'];?>"><button>刪除</button></a>
+        <a href="?do=award&id=<?=$row['id'];?>"><button>兌獎</button></a>
         </td>
     </tr>
     <?php

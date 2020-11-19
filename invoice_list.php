@@ -2,6 +2,8 @@
 include_once "base.php";
 $period=ceil(date("m")/2);
 
+$period=ceil(date("m")/2);
+
 $sql="select * from `invoices` where period='$period' order by date desc";
 
 $rows=$pdo->query($sql)->fetchAll();

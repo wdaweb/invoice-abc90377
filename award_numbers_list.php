@@ -35,15 +35,16 @@ foreach ($awards as $aw) {
 
 
 ?>
-<div class="row " > 
+<div class="d-flex flex-column ">
+<div class="d-flex flex-row" > 
 <ul>
     
-    <li><a href="http://">1 2月</a></li>
-    <li><a href="http://">3 4月</a></li>
-    <li><a href="http://">5 6月</a></li>
-    <li><a href="http://">7 8月</a></li>
-    <li><a href="http://">9 10月</a></li>
-    <li><a href="http://">11 12月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-1">1 2月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-2">3 4月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-3">5 6月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-4">7 8月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-5">9 10月</a></li>
+    <li><a href="?do=award_numbers_list&pd=2020-6">11 12月</a></li>
 </ul>
 </div>
 <table class="table table-sm table-bordered" summary="統一發票中獎號碼單">
@@ -127,3 +128,5 @@ echo" <br>";
         </tr>
     </tbody>
 </table>
+<button class="btn "><a href="?do=all_awards&year=<?=$year;?>&period=<?=$period;?>">單期兌獎</a></button>
+</div>

@@ -1,29 +1,50 @@
+
+<div class="d-flex flex-column">
 <?php
-include_once("base.php");
-$inv_id=$_GET['id'];
-$invoice=$pdo->query("select * from `invoices` where `id`='$inv_id'")->fetch();
+//全部兌獎
+$period_str=[
+    1=>'1、2月',
+    2=>'3、4月',
+    3=>'5、6月',
+    4=>'7、8月',
+    5=>'9、10月',
+    6=>'11、12月'
+];
+echo "你要對的發票是".$period_str[$_GET['period']];
+include_once('base.php');
+$sql="SELECT * FROM `invoices` WHERE `period`='{$_GET['period']}' && left(`date`,4)={$_GET['year']} Order by `date` desc";
+$invoices=$pdo->query($sql)->fetchALL();
 // echo "<pre>";
-// print_r($invoice);
+// print_r($invoices);
+// echo"</pre>";
+?>
+<?php
+//撈出該期獎號
+$sqlaward="SELECT * from `award_numbers` where `period`='{$_GET['period']}'";
+$awardNumber=$pdo->query($sqlaward)->fetchALL();
 // echo "<pre>";
-$number=$invoice['number'];
+// print_r($awardNumber);
+// echo"</pre>";
 
-//找出獎號
-//1確認期數
-//2得到期數資料後撈出那期開獎獎號
+?>
+<?php
+//兌獎程式
+$all_res=-1;
+foreach($invoices as $inv){
+$number=$inv['number'];
 
-$date=$invoice['date'];
+$date=$inv['date'];
 //explode(-,$date)取得陣列 陣列的第二個元素就是月
 //月份就可以推算期數,有期數月份就可以找到開獎號碼
 $period=ceil(explode('-',$date)[1]/2);
 $year=explode('-',$date)[0];
-$awards=$pdo->query("select * from `award_numbers` where `year`='$year' && `period`='$period'")->fetchALL(PDO::FETCH_ASSOC);
 // echo $period;
 // echo $year;
 // echo "<pre>";
 // print_r($awards);
 // echo "<pre>";
-$all_res=-1;
-foreach($awards as $award){
+
+foreach($awardNumber as $award){
 switch($award['type']){
     case 1:
         if($award['number']==$number){
@@ -70,7 +91,23 @@ switch($award['type']){
         break;
 }
 }
+
+}
 if($all_res==-1){
-    echo "都沒中";
+    echo "沒中";
 }
 ?>
+
+<!-- <table class="table">
+    <?php
+    //該期發票
+    foreach($invoices as $invoice){
+        echo "<tr>";
+        echo "<td>".$invoice['code'].$invoice['number']."</td>";
+        echo "<td>".$invoice['date']."</td>";
+
+    echo "</tr>";
+    }
+    ?>
+</table> -->
+</div>

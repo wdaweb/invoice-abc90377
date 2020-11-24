@@ -10,7 +10,7 @@ if (isset($_GET['meg'])) {
 <form action="api/add_invoice.php" method="post">
 <div class="form-group">
 <label for="" class="col-2">時間:</label>
-<input type="date" name="period" >
+<input type="date" name="date" >
 </div>
 <div class="form-group">
 <label for="" class="col-2">發票號碼:</label>

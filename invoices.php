@@ -2,9 +2,7 @@
 include_once('base.php');
 $sql="SELECT * FROM `invoice` ";
 $invoices=$pdo->query($sql)->fetchALL();
-if (isset($_GET['meg'])) {
-    echo $_GET['meg'];
-}
+
 ?>
 
 <table class='table'>
@@ -22,6 +20,9 @@ foreach($invoices as $invoice){
     echo "<td>".$invoice['payment']."</td>";
     echo "<td>";
     echo "<a href='?do=editinv&id={$invoice['id']}'><button>編輯</button></a>";
+    echo "<a href='?do=delcheck&id={$invoice['id']}'><button>刪除</button></a>";
+
+    
     echo "</td>";
     echo '<tr>';
 }

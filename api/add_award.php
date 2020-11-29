@@ -11,5 +11,5 @@ implode("','",$_POST).
 
 // echo $sql;
 $pdo->exec($sql);
-header('location:../index.php?do=lookaward&meg=add_sus');
+header('location:../index.php?do=inputaward&meg=add_sus');
 ?>

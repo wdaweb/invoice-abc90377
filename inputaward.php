@@ -4,8 +4,10 @@ $year=date('Y');
 include_once('base.php');
 if (isset($_GET['meg'])) {
    if ($_GET['meg']=='repeat') {
-       echo "您已經輸入過這期的獎號囉,請去編輯獎號修改即可!";
-   }
+       echo "您已經輸入過這期的獎號囉,請去「查獎號>編輯獎號」修改即可!";
+   }elseif ($_GET['meg']=='add_sus') {
+    echo "已為您新增獎號,請去「查獎號」查看即可!";
+}
 }
 ?>
 <?php
@@ -133,9 +135,6 @@ if (!empty($check)) {
    </table>
    <input type="submit" value="確認新增">
    </form>
-
 <?php
 }
 ?>
-
-

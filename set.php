@@ -1,6 +1,7 @@
 <!-- //登入發票 -->
 <div class="container ">
 <?php
+$date=date('Y-m-d');
 if (isset($_GET['meg'])) {
     if ($_GET['meg']=='setsus') {
         echo '新增成功,可以去發票存摺查看您新增的發票喔!';
@@ -10,7 +11,7 @@ if (isset($_GET['meg'])) {
 <form action="api/add_invoice.php" method="post">
 <div class="form-group">
 <label for="" class="col-2">時間:</label>
-<input type="date" name="date" >
+<input type="date" name="date" value="<?=$date;?>">
 </div>
 <div class="form-group">
 <label for="" class="col-2">發票號碼:</label>

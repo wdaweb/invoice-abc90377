@@ -18,6 +18,7 @@ if (!empty($_POST['chose_period'])) {
 if (empty($_POST['chose_period'])) {
 
 ?>
+<h3>我要查他期獎號</h3>
 <form action="?do=lookaward" method="POST">
 你要查詢的獎號年份是?
 <select name="chose_year" id="">

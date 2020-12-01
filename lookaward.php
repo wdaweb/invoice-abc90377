@@ -37,7 +37,7 @@ if (empty($_POST['chose_period'])) {
     <option value="6">11~12月</option>
     
 </select>
-<input type="submit" value="送出">
+<input type="submit" value="送出" >
 </form>
 
 <?php

@@ -22,7 +22,7 @@
             
         
       </div>
-      <div class=" col-9 border mx-auto p-3" style='height:400px'>
+      <div class=" col-9 border mx-auto p-3" style=''>
       <?php
       if (isset($_GET['do'])) {
           include_once("{$_GET['do']}.php");

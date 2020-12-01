@@ -2,7 +2,13 @@
 include_once('base.php');
 $sql="SELECT * FROM `invoice` ";
 $invoices=$pdo->query($sql)->fetchALL();
-
+if (isset($_GET['meg'])) {
+    if ($_GET['meg']=='修改成功') {
+        echo "發票已修改成功!";
+    }elseif ($_GET['meg']=='刪除成功') {
+        echo "發票已刪除成功!";
+    }
+}
 ?>
 
 <table class='table'>

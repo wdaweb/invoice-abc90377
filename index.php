@@ -9,11 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <style>
-.nav>a:link, a:visited,a:hover, a:active {
-  
-  color: white;
-  
-}
+
 body{
     background:#AEC8CA;
     color:#6F5F5E;
@@ -56,10 +52,10 @@ body{
 
         ?>
             <div class="nav center  <?=$set?>"><a href="?do=set" class="text-white">登入發票</a></div>
-            <div class="nav center  text-white <?=$invoices?>"><a href="?do=invoices" >發票存摺</a></div>
-            <div class="nav center  text-white <?=$doaward?>"><a href="?do=doaward" >對獎</a></div>
-            <div class="nav center  text-white <?=$lookaward?>"><a href="?do=lookaward" >查獎號</a></div>
-            <div class="nav center  text-white <?=$inputaward?>"><a href="?do=inputaward" >輸入獎號</a></div>
+            <div class="nav center  text-white <?=$invoices?>"><a href="?do=invoices" class="text-white" >發票存摺</a></div>
+            <div class="nav center  text-white <?=$doaward?>"><a href="?do=doaward" class="text-white" >對獎</a></div>
+            <div class="nav center  text-white <?=$lookaward?>"><a href="?do=lookaward" class="text-white" >查獎號</a></div>
+            <div class="nav center  text-white <?=$inputaward?>"><a href="?do=inputaward" class="text-white" >輸入獎號</a></div>
             
         
       </div>

@@ -9,5 +9,5 @@ $id=$_GET['id'];
 $sql="DELETE FROM `invoice`
 WHERE `id`='$id'";
 $pdo->exec($sql);
-header('location:../?do=invoices')
+header('location:../?do=invoices&meg=刪除成功');
 ?>

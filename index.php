@@ -45,8 +45,6 @@ body{
                 case 'inputaward':
                     $inputaward="font-weight-bold";
                     break;
-                
-
             }
         }
 

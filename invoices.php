@@ -23,14 +23,35 @@ $year=date('Y');
 </form>
 <?php
 
-$now_period=ceil(date('n')/2);
-include_once('base.php');
-if (!empty($_GET['chose_period'])) {
-    $sql="SELECT * FROM `invoice` Where `year`='{$_GET['chose_year']}' && `period`='{$_GET['chose_period']}'";
-}else{
-   $sql="SELECT * FROM `invoice` Where `year`='$year' && `period`='$now_period'"; 
-}
 
+include_once('base.php');
+
+if (!empty($_GET['chose_period'])) {
+  $year=$_GET['chose_year'];
+  $period=$_GET['chose_period']; 
+   
+}elseif(!empty($_GET['page'])){
+  $year=$_GET['year'];
+  $period=$_GET['period'];
+
+}
+else{
+  $period=ceil(date('n')/2);
+  $year=date('Y');
+  
+}
+if(!empty($_GET['page'])){
+  $i=$_GET['page'];
+  $first=(($i-1)*10);
+  $last=$first+9;
+  
+}else{
+  $i=1;
+  $first=(($i-1)*10);
+  
+}
+$sql="SELECT * FROM `invoice` Where `year`='{$year}' && `period`='{$period}' ORDER BY `date` limit {$first},10"; 
+// echo $sql;
 $invoices=$pdo->query($sql)->fetchALL();
 if (isset($_GET['meg'])) {
     if ($_GET['meg']=='修改成功') {
@@ -39,8 +60,8 @@ if (isset($_GET['meg'])) {
         echo "發票已刪除成功!";
     }
 }
-if (!empty($_GET['chose_period'])) {
-    switch($_GET['chose_period']){
+
+switch($period){
         
 case 1:
   $month="1~2";
@@ -63,36 +84,10 @@ case 6:
 
     }
     echo "<h1>";
-    echo "這是{$_GET['chose_year']}年-{$month}月的發票";
-    echo "</h1>";
-
-}else{
-  switch($now_period){
-        
-    case 1:
-      $month="1~2";
-      break;  
-    case 2:
-      $month="3~4";
-      break;  
-    case 3:
-      $month="5~6";
-      break;  
-    case 4:
-      $month="7~8";
-      break;  
-    case 5:
-      $month="9~10";
-      break;  
-    case 6:
-      $month="11~12";
-      break;  
-    
-        }
-  echo "<h1>";
     echo "這是{$year}年-{$month}月的發票";
     echo "</h1>";
-}
+
+
 ?>
 
 <table class='table'>
@@ -117,4 +112,25 @@ foreach($invoices as $invoice){
 }
 
 ?>
+
 </table>
+<?php
+$data_amount=$pdo->query("SELECT COUNT(*) FROM `invoice` WHERE `year`='{$year}' && `period`='{$period}'")->fetch();
+$page_amount=ceil($data_amount[0]/10);
+// print_r($data_amount);
+// echo $page_amount;
+
+
+?>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  <?php
+  for($i=1;$i<=$page_amount;$i++){
+    
+   echo "<li class='page-item'><a class='page-link' href='?do=invoices&year=$year&period=$period&page=$i'>$i</a></li>";
+}
+    ?>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

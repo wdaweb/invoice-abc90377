@@ -9,7 +9,7 @@ implode("`,`",array_keys($_POST)).
 implode("','",$_POST).
 "')";
 
-// echo $sql;
+echo $sql;
 $pdo->exec($sql);
 header('location:../index.php?do=inputaward&meg=add_sus');
 ?>

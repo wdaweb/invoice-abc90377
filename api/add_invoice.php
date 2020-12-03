@@ -11,7 +11,7 @@ if (empty($_POST[$field])) {
 }}
 function length($field,$len){
 if(!empty($_POST[$field])){
-if (strlen($_POST[$field])<$len) {
+if (strlen($_POST[$field])<$len||strlen($_POST[$field])>$len) {
    $_SESSION[$field]['meg']="此欄位長度錯誤"; 
    return 1;
 }}}

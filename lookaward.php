@@ -18,10 +18,9 @@ if (!empty($_GET['meg'])) {
   }
 }
 ?>
-<?php
-if (empty($_POST['chose_period'])) {
 
-?>
+
+
 <h3>我要查他期獎號</h3>
 <form action="?do=lookaward" method="POST">
 你要查詢的獎號年份是?
@@ -45,10 +44,13 @@ if (empty($_POST['chose_period'])) {
 </form>
 
 <?php
-}
+
 if (!empty($_POST)) {
     echo '<a href="?do=lookaward">返回當期獎號</a>';
 }
+if (empty($award)) {
+  echo "還沒輸入這期獎號喔";
+}else{
 ?>
     <table class="table table-bordered" summary="統一發票中獎號碼單"> 
     <tbody>
@@ -144,3 +146,6 @@ if (!empty($_POST)) {
    </table>
    
    <a href="?do=edit_award&year=<?=$year;?>&period=<?=$period;?>"><button>編輯這期獎號</button></a>
+   <?php
+}
+?>

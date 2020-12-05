@@ -1,5 +1,6 @@
 <?php
 include_once('base.php');
+
 session_start();
     $period=ceil(date('m')/2);
     $year=date('Y');
@@ -15,10 +16,14 @@ if (isset($_SESSION['result'])) {
     }
     echo "您總共中了".$result_total."張發票";
     echo "<br>";
-    }else {
+    unset($_SESSION['result']);
+}elseif(empty($_SESSION['result'])&&empty($_GET['meg'])){
     echo "很可惜,這期都沒有中";
+    unset($_SESSION['result']);
+}elseif($_GET['meg']='獎號不存在'){
+        echo "你還沒輸入這期獎號喔!";
+        unset($_SESSION['result']);
 }
-unset($_SESSION['result']);
 }
 if (isset($_SESSION['money'])) {
     if (!empty($_SESSION['money'])) {

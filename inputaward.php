@@ -1,5 +1,7 @@
 <?php
 $year=date('Y');
+$period=ceil(date('n')/2);
+
 
 include_once('base.php');
 if (isset($_GET['meg'])) {
@@ -24,12 +26,12 @@ if (empty($_POST['chose_period'])) {
 <br>
 你要輸入獎號的月份是?
 <select name="chose_period" id="">
-    <option value="1">1~2月</option>
-    <option value="2">3~4月</option>
-    <option value="3">5~6月</option>
-    <option value="4">7~8月</option>
-    <option value="5">9~10月</option>
-    <option value="6">11~12月</option>
+    <option value="1" <?=$period==1?'selected':'';?>>1~2月</option>
+    <option value="2" <?=$period==2?'selected':'';?>>3~4月</option>
+    <option value="3" <?=$period==3?'selected':'';?>>5~6月</option>
+    <option value="4" <?=$period==4?'selected':'';?>>7~8月</option>
+    <option value="5" <?=$period==5?'selected':'';?>>9~10月</option>
+    <option value="6" <?=$period==6?'selected':'';?>>11~12月</option>
     
 </select>
 <input type="submit" value="送出">

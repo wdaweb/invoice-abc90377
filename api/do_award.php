@@ -13,6 +13,13 @@ if (!empty($_POST['period'])) {
 
 }
 $awards_sql="select * from `award` where `period`='$period' && `year`='$year'";
+$if_award_isset=$pdo->query($awards_sql)->fetch();
+
+
+
+
+
+
 $awards=$pdo->query($awards_sql)->fetch();
 $inv_sql="select * from `invoice` where `period`='$period' && `year`='$year'";
 $inv=$pdo->query($inv_sql)->fetchALL();
@@ -100,6 +107,11 @@ if (!empty($result)) {
 
 }
 print_r($_SESSION['inv']);
-header('location:../index.php?do=doaward');
+if (empty($if_award_isset)) {
+    header('location:../index.php?do=doaward&meg=獎號不存在');
+}else{
+    header('location:../index.php?do=doaward');
+}
+
 
 ?>

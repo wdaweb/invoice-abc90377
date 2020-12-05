@@ -1,5 +1,5 @@
 <form action="?" method="GET">
-你要輸入獎號的年份是?
+你要查詢的年份是?
 <?php
 $year=date('Y');
 ?>
@@ -8,7 +8,7 @@ $year=date('Y');
 <option value="<?=$year;?>" selected><?=$year;?></option>
 </select>
 <br>
-你要輸入獎號的月份是?
+你要查詢的月份是?
 <select name="chose_period" id="">
     <option value="1">1~2月</option>
     <option value="2">3~4月</option>
@@ -106,7 +106,7 @@ foreach($invoices as $invoice){
     echo "<td>".$invoice['payment']."</td>";
     echo "<td>";
     echo "<a href='?do=editinv&id={$invoice['id']}'><button>編輯</button></a>";
-    echo "<a href='?do=delcheck&id={$invoice['id']}'><button>刪除</button></a>";
+    echo "<a href='?do=delcheck&id={$invoice['id']}&year={$year}&period={$period}'><button>刪除</button></a>";
     echo "</td>";
     echo '<tr>';
 }

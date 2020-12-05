@@ -72,7 +72,7 @@ if(!empty($_SESSION['inv'])) {
 <select name="year" id="">
 <option value="<?=$year-1;?>"><?=$year-1;?></option>
 <option value="<?=$year;?>" selected><?=$year;?></option>
-<option value="<?=$year+1;?>"><?=$year+1;?></option>
+
 </select>
 <br>
 你要對獎的月份是?

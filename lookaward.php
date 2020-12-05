@@ -12,7 +12,11 @@ if (!empty($_POST['chose_period'])) {
     $award=$pdo->query($sql)->fetch();
     
 }
-
+if (!empty($_GET['meg'])) {
+  if ($_GET['meg']=='修改成功') {
+   echo "<div>已成功為您修改獎號!</div>";
+  }
+}
 ?>
 <?php
 if (empty($_POST['chose_period'])) {
@@ -24,7 +28,7 @@ if (empty($_POST['chose_period'])) {
 <select name="chose_year" id="">
 <option value="<?=$year-1;?>"><?=$year-1;?></option>
 <option value="<?=$year;?>" selected><?=$year;?></option>
-<option value="<?=$year+1;?>"><?=$year+1;?></option>
+
 </select>
 <br>
 你要查詢的獎號的月份是?
@@ -138,4 +142,5 @@ if (!empty($_POST)) {
     
     </tbody>
    </table>
-   </form>
+   
+   <a href="?do=edit_award&year=<?=$year;?>&period=<?=$period;?>"><button>編輯這期獎號</button></a>

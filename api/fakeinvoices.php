@@ -2,7 +2,7 @@
 include_once('../base.php');
 echo  "資料產生中......" ;
 echo  date ( "Ymd H:i:s" );
-for($i= 0;$i<=500;$i ++){
+for($i= 0;$i<=1000;$i ++){
 $year=rand(2019,2020);
 $month=rand(1,12);
 $period=ceil($month/2);

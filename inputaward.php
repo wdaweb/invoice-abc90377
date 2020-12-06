@@ -12,7 +12,9 @@ if (isset($_GET['meg'])) {
     echo "</div>";
     
    }elseif ($_GET['meg']=='add_sus') {
-    echo "已為您新增獎號,請去「查獎號」查看即可!";
+    echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+    echo "<i class='fab fa-angellist'></i>&nbsp;已為您新增獎號,請去「查獎號」查看即可!";
+    echo "</div>";
 }
 }
 ?>

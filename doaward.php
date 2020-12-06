@@ -18,6 +18,7 @@ if (isset($_SESSION['result'])) {
     echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
     echo "<h3>您總共中了".$result_total."張發票</h3>";
     echo "<br>";
+    
     unset($_SESSION['result']);
 }elseif(empty($_SESSION['result'])&&empty($_GET['meg'])){
     echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
@@ -41,8 +42,9 @@ if (isset($_SESSION['money'])) {
     }
     echo "<h3>您總共中了".$money_total."元</h3>";
     echo "</div>";
+    unset($_SESSION['money']);
     }
-unset($_SESSION['money']);
+
 }
 if(!empty($_SESSION['inv'])) {
     echo "<hr>";

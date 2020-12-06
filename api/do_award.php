@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['result']=[];
-$_SESSION['money']="";
+$_SESSION['money']=[];
 $_SESSION['inv']=[];
 include_once('../base.php');
 if (!empty($_POST['period'])) {
@@ -15,23 +15,19 @@ if (!empty($_POST['period'])) {
 $awards_sql="select * from `award` where `period`='$period' && `year`='$year'";
 $if_award_isset=$pdo->query($awards_sql)->fetch();
 
-
-
-
-
-
 $awards=$pdo->query($awards_sql)->fetch();
 $inv_sql="select * from `invoice` where `period`='$period' && `year`='$year'";
 $inv=$pdo->query($inv_sql)->fetchALL();
 // print_r($awards);
 // echo "<hr>";
 // print_r($inv);
+
+foreach($inv as $invoice){
 $result="";
 $money=0;
 $inv_num="";
-foreach($inv as $invoice){
    $num=$invoice['number'];
-if (substr($num, -3)==$awards['sixprize_1']) {
+if (substr($num,-3)==$awards['sixprize_1']) {
     $result="增開六獎";
     $money=200;
     $inv_num=$num;
@@ -93,25 +89,22 @@ if ($num==$awards['specialprize']) {
     $money=10000000;
     $inv_num=$num;
 }
+
 if (!empty($result)) {
     $_SESSION['result'][]=$result;
     $_SESSION['money'][]=$money;
     $_SESSION['inv'][]=['number'=>$inv_num,'result'=>$result,'money'=>$money];
-
-
-}else {
-    $_SESSION['result']=[];
-    $_SESSION['money']=[];
-    $_SESSION['inv']=[];
+    // print_r($_SESSION['inv']);
 }
 
 }
 print_r($_SESSION['inv']);
+print_r($_SESSION['result']);
 if (empty($if_award_isset)) {
-    header('location:../index.php?do=doaward&meg=獎號不存在');
+    $meg='獎號不存在';
 }else{
-    header('location:../index.php?do=doaward');
+    $meg='';
 }
-
+header("location:../index.php?do=doaward&meg=$meg");
 
 ?>

@@ -61,11 +61,11 @@ $invoices=$pdo->query($sql)->fetchALL();
 if (isset($_GET['meg'])) {
     if ($_GET['meg']=='修改成功') {
       echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">';
-        echo "<i class='fas fa-exclamation-triangle'></i>&nbsp;發票已修改成功!";
+        echo "<i class='fab fa-angellist'></i>&nbsp;</i>&nbsp;發票已修改成功!";
         echo '</div>';
     }elseif ($_GET['meg']=='刪除成功') {
       echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">';
-        echo "<i class='fas fa-exclamation-triangle'></i>&nbsp;發票已刪除成功!";
+        echo "<i class='fab fa-angellist'></i>&nbsp;發票已刪除成功!";
         echo '</div>';
     }
 }
@@ -131,8 +131,8 @@ $page_amount=ceil($data_amount[0]/10);
 
 
 ?>
-<nav aria-label="Page navigation example" style='color:#6F5F5E'>
-  <ul class="pagination" >
+<nav aria-label="Page navigation example " style='color:#6F5F5E'>
+  <ul class="pagination  flex-wrap" >
   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
   <?php
   for($i=1;$i<=$page_amount;$i++){

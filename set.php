@@ -4,7 +4,8 @@
 $date=date('Y-m-d');
 if (isset($_GET['meg'])) {
     if ($_GET['meg']=='setsus') {
-        echo '新增成功,可以去發票存摺查看您新增的發票喔!';
+        echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">
+        <i class="fab fa-angellist"></i>&nbsp;新增成功,可以去發票存摺查看您新增的發票喔!</div>';
     }
 }
 session_start();
@@ -16,25 +17,28 @@ function meg($field){
 
     
 ?>
-<form action="api/add_invoice.php" method="post">
+<form action="api/add_invoice.php" method="post" class="col-6">
+
 <div class="form-group">
-<label for="" class="col-2">時間:</label>
-<input type="date" name="date" value="<?=$date;?>">
+<label for="date" >時間:</label>
+<input id="date"  class="form-control" type="date" name="date" value="<?=$date;?>">
 <?=meg('date');?>
 </div>
 <div class="form-group">
-<label for="" class="col-2">發票號碼:</label>
-<input type="text"  name="code" style="width:50px"><input type="number" name="number" id="">
+<label for="code" >發票號碼:</label>
+<div class="d-block">
+<input type="text"  class="form-control d-inline col-2" id="code" name="code" ><input type="number"  class="form-control d-inline col-10"  name="number" id="number">
 <?=meg('number');?>
 </div>
-<div class="form-group"></div>
-<label for="" class="col-2">花費:</label>
-<input type="number" name="payment" >
+</div>
+<div class="form-group">
+<label for="payment">花費:</label>
+<input type="number"  class="form-control" id="payment" name="payment" >
 <?=meg('payment');?>
 </div>
-<div class="form-group ">
-<label class="col-2"></label>
-<input type="submit" value="輸入">
-</div>
-</div>
+
+
+<input type="submit" value="輸入" class="btn btn-sm mt-3" style="background:#6D8C8E;color:white" >
+
 </form>
+</div>

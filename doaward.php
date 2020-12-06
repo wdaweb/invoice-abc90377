@@ -1,3 +1,4 @@
+<div class="container">
 <?php
 include_once('base.php');
 
@@ -14,15 +15,21 @@ if (isset($_SESSION['result'])) {
         
         
     }
-    echo "您總共中了".$result_total."張發票";
+    echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+    echo "<h3>您總共中了".$result_total."張發票</h3>";
     echo "<br>";
     unset($_SESSION['result']);
 }elseif(empty($_SESSION['result'])&&empty($_GET['meg'])){
-    echo "很可惜,這期都沒有中";
+    echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+    echo "<h3>很可惜,這期都沒有中</h3>";
+    echo "</div>";
     unset($_SESSION['result']);
 }elseif($_GET['meg']='獎號不存在'){
-        echo "你還沒輸入這期獎號喔!";
-        unset($_SESSION['result']);
+    echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+    echo "<h3>你還沒輸入這期獎號喔!</h3>";
+    unset($_SESSION['result']);
+    echo "</div>";
+
 }
 }
 if (isset($_SESSION['money'])) {
@@ -32,11 +39,13 @@ if (isset($_SESSION['money'])) {
     foreach($moneys as $money){
         $money_total=$money_total+$money;
     }
-    echo "您總共中了".$money_total."元";
+    echo "<h3>您總共中了".$money_total."元</h3>";
+    echo "</div>";
     }
 unset($_SESSION['money']);
 }
 if(!empty($_SESSION['inv'])) {
+    echo "<hr>";
 
     echo "<h3>中獎發票清單</h3>";
     echo "<table class='table'>";
@@ -66,12 +75,16 @@ if(!empty($_SESSION['inv'])) {
     }
     echo "</tbody></table>";
     unset($_SESSION['inv']);
+    echo "<hr>";
 }
 ?>
+<div class="rounded rounded-lg info border p-3  m-3 ">
 
-<h3>我要對本期獎項</h3>
-<a href="api/do_award.php">開始對獎</a>
-<h3>我要對他期獎項</h3>
+<h3><i class="fas fa-search-dollar"></i>我要對本期獎項</h3>
+<a href="api/do_award.php"  class='btn btn-sm ' style='background:#6D8C8E;color:white'>開始對獎</a>
+</div>
+<div class="mt-3 rounded rounded-lg box border p-3  m-3" >
+<h3><i class="fas fa-search-dollar"></i>我要對他期獎項</h3>
 <form action="api/do_award.php" method="POST">
 你要對獎的年份是?
 <select name="year" id="">
@@ -90,7 +103,11 @@ if(!empty($_SESSION['inv'])) {
     <option value="6">11~12月</option>
     
 </select>
-<input type="submit" value="開始對獎">
+<br>
+<input type="submit"  class='btn btn-sm ' style='background:#6D8C8E;color:white' value="開始對獎">
 </form>
+</div>
+</div>
+
 
 

@@ -6,7 +6,11 @@ $period=ceil(date('n')/2);
 include_once('base.php');
 if (isset($_GET['meg'])) {
    if ($_GET['meg']=='repeat') {
-       echo "您已經輸入過這期的獎號囉,請去「查獎號>編輯獎號」修改即可!";
+    echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+    echo "<i class='fas fa-exclamation-triangle'></i>&nbsp;您已經輸入過這期的獎號囉,請去「查獎號>編輯獎號」修改即可!";
+    
+    echo "</div>";
+    
    }elseif ($_GET['meg']=='add_sus') {
     echo "已為您新增獎號,請去「查獎號」查看即可!";
 }
@@ -16,6 +20,7 @@ if (isset($_GET['meg'])) {
 if (empty($_POST['chose_period'])) {
 
 ?>
+<div class='info rounded rounded-lg border p-3 m-3 '>
 <form action="index.php?do=inputaward" method="POST">
 你要輸入獎號的年份是?
 <select name="chose_year" id="">
@@ -34,10 +39,11 @@ if (empty($_POST['chose_period'])) {
     <option value="6" <?=$period==6?'selected':'';?>>11~12月</option>
     
 </select>
-<input type="submit" value="送出">
+<input type="submit" value="送出" class='btn btn-sm ' style='background:#6D8C8E;color:white'>
 </form>
+</div>
 <?php
-;}else{
+}else{
     $sql="SELECT * FROM `award` WHERE `period`='{$_POST["chose_period"]}' && `year`='{$_POST["chose_year"]}' ";
 $check=$pdo->query($sql)->fetch();
 if (!empty($check)) {
@@ -135,7 +141,7 @@ if (!empty($check)) {
     
     </tbody>
    </table>
-   <input type="submit" value="確認新增">
+   <input type="submit" class='btn btn-sm' style='background:#6D8C8E;color:white' value="確認新增">
    </form>
 <?php
 }

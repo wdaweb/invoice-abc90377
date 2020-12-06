@@ -1,4 +1,7 @@
+<div class="rounded rounded-lg info border p-3 d-flex m-3 ">
+
 <form action="?" method="GET">
+<h3><i class="fas fa-search-dollar"></i>我要查他期發票</h3>
 你要查詢的年份是?
 <?php
 $year=date('Y');
@@ -19,8 +22,10 @@ $year=date('Y');
     
 </select>
 <input type="hidden" name="do" value="invoices">
-<input type="submit" value="送出">
+
+<input type="submit" value="送出" class="btn btn-sm " style="background:#6D8C8E;color:white">
 </form>
+</div>
 <?php
 
 
@@ -55,9 +60,13 @@ $sql="SELECT * FROM `invoice` Where `year`='{$year}' && `period`='{$period}' ORD
 $invoices=$pdo->query($sql)->fetchALL();
 if (isset($_GET['meg'])) {
     if ($_GET['meg']=='修改成功') {
-        echo "發票已修改成功!";
+      echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">';
+        echo "<i class='fas fa-exclamation-triangle'></i>&nbsp;發票已修改成功!";
+        echo '</div>';
     }elseif ($_GET['meg']=='刪除成功') {
-        echo "發票已刪除成功!";
+      echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">';
+        echo "<i class='fas fa-exclamation-triangle'></i>&nbsp;發票已刪除成功!";
+        echo '</div>';
     }
 }
 
@@ -83,9 +92,9 @@ case 6:
   break;  
 
     }
-    echo "<h1>";
+    echo "<div class='container'><h3>";
     echo "這是{$year}年-{$month}月的發票";
-    echo "</h1>";
+    echo "</h3>";
 
 
 ?>
@@ -105,8 +114,8 @@ foreach($invoices as $invoice){
     echo "<td>".$invoice['code'].$invoice['number']."</td>";
     echo "<td>".$invoice['payment']."</td>";
     echo "<td>";
-    echo "<a href='?do=editinv&id={$invoice['id']}'><button>編輯</button></a>";
-    echo "<a href='?do=delcheck&id={$invoice['id']}&year={$year}&period={$period}'><button>刪除</button></a>";
+    echo "<a href='?do=editinv&id={$invoice['id']}'><button class='btn btn-sm ' style='background:#6D8C8E;color:white'>編輯</button></a>";
+    echo "<a href='?do=delcheck&id={$invoice['id']}&year={$year}&period={$period}'><button class='btn btn-sm mx-1' style='background:#D28A7C;color:white'>刪除</button></a>";
     echo "</td>";
     echo '<tr>';
 }
@@ -122,8 +131,8 @@ $page_amount=ceil($data_amount[0]/10);
 
 
 ?>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
+<nav aria-label="Page navigation example" style='color:#6F5F5E'>
+  <ul class="pagination" >
   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
   <?php
   for($i=1;$i<=$page_amount;$i++){
@@ -134,3 +143,4 @@ $page_amount=ceil($data_amount[0]/10);
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
+</div>

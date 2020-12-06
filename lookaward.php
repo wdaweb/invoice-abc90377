@@ -14,14 +14,16 @@ if (!empty($_POST['chose_period'])) {
 }
 if (!empty($_GET['meg'])) {
   if ($_GET['meg']=='修改成功') {
-   echo "<div>已成功為您修改獎號!</div>";
+    echo '<div class="rounded rounded-lg award border p-3 d-flex m-3 ">';
+   echo "<i class='fab fa-angellist'></i>&nbsp;已成功為您修改獎號!";
+   echo '</div>';
   }
 }
 ?>
 
 
-
-<h3>我要查他期獎號</h3>
+<div class='info rounded rounded-lg border p-3 m-3 '>
+<h3><i class="fas fa-search-dollar"></i>我要查他期獎號</h3>
 <form action="?do=lookaward" method="POST">
 你要查詢的獎號年份是?
 <select name="chose_year" id="">
@@ -40,19 +42,26 @@ if (!empty($_GET['meg'])) {
     <option value="6">11~12月</option>
     
 </select>
-<input type="submit" value="送出" >
+<input type="submit" class='btn btn-sm ' style='background:#6D8C8E;color:white' value="送出" >
 </form>
-
+<?php
+if (!empty($_POST)) {
+    echo '<a href="?do=lookaward"><button class="btn btn-sm " style="background:#6D8C8E;color:white">返回當期獎號</button></a>';
+}
+?>
+</div>
 <?php
 
-if (!empty($_POST)) {
-    echo '<a href="?do=lookaward">返回當期獎號</a>';
-}
+
 if (empty($award)) {
-  echo "還沒輸入這期獎號喔";
+  echo "<div class='award rounded rounded-lg border p-3 m-3 '>";
+  echo "<h3><i class='fas fa-exclamation-triangle'></i>&nbsp;你還沒輸入這期獎號喔!</h3>";
+  
+  echo "</div>";
 }else{
 ?>
-    <table class="table table-bordered" summary="統一發票中獎號碼單"> 
+<hr>
+    <table class="table table-bordered mt-3" summary="統一發票中獎號碼單"> 
     <tbody>
      <tr> 
       <th id="group0">年月份</th> 
@@ -145,7 +154,8 @@ if (empty($award)) {
     </tbody>
    </table>
    
-   <a href="?do=edit_award&year=<?=$year;?>&period=<?=$period;?>"><button>編輯這期獎號</button></a>
+   <a href="?do=edit_award&year=<?=$year;?>&period=<?=$period;?>">
+   <button class='btn btn-sm ' style='background:#6D8C8E;color:white'>編輯這期獎號</button></a>
    <?php
 }
 ?>

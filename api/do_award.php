@@ -21,7 +21,7 @@ $inv=$pdo->query($inv_sql)->fetchALL();
 // print_r($awards);
 // echo "<hr>";
 // print_r($inv);
-
+if (!empty($if_award_isset)) {
 foreach($inv as $invoice){
 $result="";
 $money=0;
@@ -100,6 +100,7 @@ if (!empty($result)) {
 }
 print_r($_SESSION['inv']);
 print_r($_SESSION['result']);
+}
 if (empty($if_award_isset)) {
     $meg='獎號不存在';
 }else{
